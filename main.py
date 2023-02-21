@@ -10,23 +10,25 @@ conn = mysql.connector.connect(
     password=os.environ.get("MYSQL_PASSWORD"),
     host=os.environ.get("MYSQL_HOST"),
     port=os.environ.get("MYSQL_PORT"),
-    database=os.environ.get("MYSQL_DATABASE")
+    database=os.environ.get("MYSQL_DATABASE"),
 )
 print(conn)
 
+
 def insert_data():
     cur = conn.cursor()
-    
+
     today = datetime.date.today()
     now = datetime.datetime.now().time()
-    
+
     cur.execute(
-        '''
+        """
         INSERT INTO datatbl 
             (deviceid, data, date, time)
         VALUES 
             (%s, %s, %s, %s)
-    ''', (9876, random.randint(1, 200), today, now)
+    """,
+        (9876, random.randint(1, 200), today, now),
     )
     print(f"{today} {now}: insert")
     conn.commit()
@@ -37,9 +39,6 @@ if __name__ == "__main__":
     while True:
         insert_data()
         time.sleep(60)
-        
-
-
 
 if conn is not None and conn.is_connected():
-        conn.close()
+    conn.close()

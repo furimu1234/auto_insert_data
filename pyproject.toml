@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "send-req"
+version = "0.1.0"
+description = ""
+authors = ["furimu1234 <enu7693@gmail.com>"]
+readme = "README.md"
+packages = [{include = "send_req"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+mysqlclient = "^2.1.1"
+mysql-connector-python = "^8.0.32"
+python-dotenv = "^0.21.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
